@@ -2,3 +2,4 @@
 assets
 *.csv
 *.ipynb
+__pycache__
