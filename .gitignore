@@ -3,3 +3,4 @@ assets
 *.csv
 *.ipynb
 __pycache__
+__init__.py
