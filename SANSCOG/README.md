@@ -26,7 +26,7 @@ pip install pandas pydicom python-magic
 ```
 ### Initialize the Crawler
 ```python
-from dicom_crawler import DICOMCrawler
+from SANSCOG.data import DICOMCrawler
 
 # Initialize with paths and JSON template
 crawler = DICOMCrawler([
@@ -73,7 +73,7 @@ If processing multiple directories, you can speed up the crawl using concurrency
 ### Example with ThreadPoolExecutor
 ```python
 from concurrent.futures import ThreadPoolExecutor
-from dicom_crawler import DICOMCrawler
+from SANSCOG.data import DICOMCrawler
 
 def crawl_path(path):
     crawler = DICOMCrawler([path], json_path="utils/modal-templates.json")
