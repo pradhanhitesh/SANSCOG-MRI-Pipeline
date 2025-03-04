@@ -19,7 +19,7 @@ class DICOMCrawler:
     >>> crawler.crawl()
     """
 
-    def __init__(self, paths, json_path='utils/modal-templates.json'):
+    def __init__(self, json_path='utils/modal-templates.json'):
         """
         Initialize the DICOMCrawler instance.
 
@@ -27,7 +27,6 @@ class DICOMCrawler:
         - paths (str | list): A single path or a list of paths to crawl for DICOM files.
         - json_path (str): Path to the JSON file containing modality templates. Defaults to 'utils/modal-templates.json'.
         """
-        self.paths = paths if isinstance(paths, list) else [paths]
         self.json_path = json_path
 
     def _read_json(self):
@@ -89,7 +88,7 @@ class DICOMCrawler:
         df['value'] = df[0].apply(lambda x: x.value)
         return df[['name', 'value']]
 
-    def crawl(self):
+    def crawl(self, paths):
         """
         Crawl the specified directories, process DICOM files, and save results.
 
@@ -102,7 +101,7 @@ class DICOMCrawler:
         """
         data = self._read_json()
 
-        for path in self.paths:
+        for path in paths:
             subject_data = []
             for key, value in data.items():
                 tags = value
@@ -126,6 +125,8 @@ class DICOMCrawler:
                     else:
                         subject_data.append([key, file, len(glob.glob(f"{file}/**")), None, None, None, None, None])
 
+            # Create modal.csv file
+            # Sort by acquisition time
             modal_data = pd.DataFrame(
                 subject_data,
                 columns=['Modality', 'Path', 'DCM_Count', 'Study Date', 'Acquisition Time', 'Subject_ID', 'Subject_Sex', 'Subject_Age']
