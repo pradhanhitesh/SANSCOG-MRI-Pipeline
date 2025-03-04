@@ -4,7 +4,7 @@
     "DTI20" : ["ep2d_diff_mddw_20_p2(DTI)_Series"],
     "DTI64" : ["ep2d_diff_4scan_trace_p2_s2_2mm_Series"],
     "T2S" : ["t2_fl3d_sag_T2_star_iso_Series"],
-    "T2F" : ["t2_FLAIR_3D_sag_p2_iso_Series"],
+    "T2F" : ["t2_FLAIR_3D_sag_p2_iso_"],
     "HRH" : ["t2_tse_HRH_tra_448_2mm_Series"],
     "SGM" : ["svs_Prs97_GM_m_ECC_Series"],
     "SWM" : ["svs_Prs97_m_ECC_Series"]
